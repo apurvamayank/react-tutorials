@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <title> Hello, Component</title>
+  <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+  <!-- Don't use this in production: -->
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+  <div id='root'/>
+  <script type='text/babel'>
+    function Welcome(props) { // The compenents are javascript functions and starts with capital letter
+      return <h1> Hello, {props.name}!</h1>
+    }
+
+    // The above and below declarations of class and function are similar in eye of React
+    // class Welcome extends React.Component {
+    //   render() {
+    //     return <h1> Hello, {props.name}!</h1>
+    //   }
+    // }
+    const element = <Welcome name='Apurva'/>
+    ReactDOM.render(
+      element,
+      document.getElementById('root')
+    );
+  </script>
+</body>
+</html>
+<!--  Note: Always start the Component name with capital letter as React treats lowercase letters as DOM elements -->

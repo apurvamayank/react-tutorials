@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hello, World!</title>
+  <meta charset="UTF-8"/>
+  <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+  <!-- Don't use this in production: -->
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+</body>
+<div id='root'/>
+<script type="text/babel">
+  function formatName(){
+    return user.firstName + ' ' + user.lastName
+  };
+
+  function greetUser(user){
+    if(user){
+      return <h1>Hello, {formatName(user)}!</h1>
+    }
+    return <h1>Hello, Stranger</h1>
+  };
+
+  const user = {
+    firstName: 'Harsh',
+     lastName: 'Khajgiwale'
+  };
+
+  const element = greetUser(user);
+
+  ReactDOM.render(
+    element,
+    document.getElementById('root')
+  );
+</script>
+</body>
+</html>

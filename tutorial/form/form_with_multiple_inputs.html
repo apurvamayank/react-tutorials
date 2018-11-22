@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <title> Forms, controlled component </title>
+  <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+  <!-- Don't use this in production: -->
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+  <div id='root'/>
+  <script type='text/babel'>
+    class Reservation extends React.Component{
+      constructor(props){
+        super(props);
+        this.state = ({ isChecked: true,
+          guestCounts: 2
+         })
+         this.handleChange = this.handleChange.bind(this);
+      };
+
+      handleChange(event){
+        const target= event.target
+        const value = target.type == 'checkbox' ? target.checked : target.value
+        const name = target.name
+        this.setState({
+          [name]: value
+        });
+      };
+      /*
+      Note how we used the ES6 computed property name syntax to update the state key corresponding to the given input name:
+
+      this.setState({
+        [name]: value
+      });
+      It is equivalent to this ES5 code:
+
+      var partialState = {};
+      partialState[name] = value;
+      this.setState(partialState);
+      Also, since setState() automatically merges a partial state into the current state, we only needed to call it with the changed parts.
+      */
+
+      render(){
+        return(
+          <form>
+            <label> Is going
+              <input type='checkbox'
+                name='isChecked'
+                checked={this.state.isChecked}
+                onChange={this.handleChange}/>
+            </label>
+            <br />
+            <label>
+              Number of guestCounts
+              <input type='number'
+                name='guestCounts'
+                value={this.state.guestCounts}
+                onChange={this.handleChange}/>
+            </label>
+          </form>
+        )
+      }
+    };
+
+    ReactDOM.render(
+      <Reservation/>,
+      document.getElementById('root')
+    );
+  </script>
+</body>
+</html>

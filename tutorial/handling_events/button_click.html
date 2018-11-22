@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <title> Event handling, button click </title>
+  <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+  <!-- Don't use this in production: -->
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+  <body>
+    <div id='root'/>
+    <script type='text/babel'>
+      function ActionClick(){ // This is the component
+        function handleClick(e){
+          e.preventDefault();
+          console.log('The link was clicked');
+        };
+        return (
+          <a href='#' onClick={handleClick}> // The event listener is camelcase in react instead of lowercase javascript pattern
+            Click me
+          </a>
+        )
+      };
+
+      ReactDOM.render(
+        <ActionClick/>,
+        document.getElementById('root')
+      );
+    </script>
+  </body>
+</html>
